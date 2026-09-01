@@ -59,7 +59,7 @@ const BAND_TEXT = {
 function Dashboard() {
   const [endpointDraft, setEndpointDraft] = useState("");
   const [endpoint, setEndpoint] = useState("");
-  const [stationId, setStationId] = useState(STATIONS[0].id);
+  const [stationId, setStationId] = useState(STATIONS[0]!.id);
   const [horizon, setHorizon] = useState(72);
   const [active, setActive] = useState<Pollutant[]>(["pm25", "pm10", "o3"]);
 
@@ -73,13 +73,13 @@ function Dashboard() {
   const data = query.data ?? fallback;
   const usingSynthetic = data.synthetic !== false;
   const hours = data.hours.slice(0, horizon);
-  const now = hours[0];
+  const now = hours[0]!;
   const alerts = useMemo(() => deriveAlerts(hours), [hours]);
 
-  const peak = hours.reduce((m, x) => (x.pm25 > m.pm25 ? x : m), hours[0]);
-  const minPbl = hours.reduce((m, x) => (x.pbl < m.pbl ? x : m), hours[0]);
+  const peak = hours.reduce((m, x) => (x.pm25 > m.pm25 ? x : m), hours[0]!);
+  const minPbl = hours.reduce((m, x) => (x.pbl < m.pbl ? x : m), hours[0]!);
   const fireHours = hours.filter((x) => x.firePulse).length;
-  const delta = hours[Math.min(23, hours.length - 1)].pm25 - now.pm25;
+  const delta = hours[Math.min(23, hours.length - 1)]!.pm25 - now.pm25;
   const station = STATIONS.find((s) => s.id === stationId)!;
   const nowBand = bandFor("pm25", now.pm25);
 

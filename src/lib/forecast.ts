@@ -90,7 +90,7 @@ export function deriveAlerts(hours: ForecastHour[]): Alert[] {
       severity: peak.inversion >= 80 ? "critical" : "warning",
       title: "Strong nocturnal inversion",
       detail: `Inversion index peaks at ${Math.round(peak.inversion)} with PBL compressed to ${Math.round(peak.pbl)} m — pollutant trapping likely.`,
-      window: win(inv[0].h, inv[inv.length - 1].h),
+      window: win(inv[0]!.h, inv[inv.length - 1]!.h),
     });
   }
 
@@ -102,7 +102,7 @@ export function deriveAlerts(hours: ForecastHour[]): Alert[] {
       severity: fire.length > 8 ? "critical" : "warning",
       title: "Upwind stubble-burning plume",
       detail: `Wind-weighted fire signal from Punjab/Haryana intersects this station across ${fire.length} forecast hours.`,
-      window: win(fire[0].h, fire[fire.length - 1].h),
+      window: win(fire[0]!.h, fire[fire.length - 1]!.h),
     });
   }
 
@@ -115,7 +115,7 @@ export function deriveAlerts(hours: ForecastHour[]): Alert[] {
       severity: peak.pm25 > 250 ? "critical" : "warning",
       title: "PM2.5 exceedance forecast",
       detail: `Predicted PM2.5 peaks at ${Math.round(peak.pm25)} µg/m³ at T+${peak.h}h, above the CPCB 'Poor' threshold.`,
-      window: win(exceed[0].h, exceed[exceed.length - 1].h),
+      window: win(exceed[0]!.h, exceed[exceed.length - 1]!.h),
     });
   }
 

@@ -77,7 +77,6 @@ export function ForecastChart({
           tickLine={false}
           axisLine={false}
           width={52}
-          label={undefined}
         />
         <Tooltip
           contentStyle={{
