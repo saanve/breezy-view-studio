@@ -82,9 +82,10 @@ export const getUpwindFires = createServerFn({ method: "GET" }).handler(
       );
       const csv = await res.text();
       const lines = csv.trim().split("\n");
-      if (lines.length < 2 || !lines[0]!.includes("latitude")) {
+      if (!lines[0]!.includes("latitude")) {
         return { source: "unavailable", error: "FIRMS returned no tabular data" };
       }
+
       const header = lines[0]!.split(",");
       const frpIdx = header.indexOf("frp");
       const rows = lines.slice(1).filter(Boolean);
