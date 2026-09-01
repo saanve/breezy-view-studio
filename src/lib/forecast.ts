@@ -26,16 +26,17 @@ export type ForecastResponse = {
   synthetic?: boolean;
 };
 
-export type Station = { id: string; name: string; area: string };
+export type Station = { id: string; name: string; area: string; lat: number; lon: number };
 
 export const STATIONS: Station[] = [
-  { id: "ito", name: "ITO", area: "Central Delhi" },
-  { id: "anand-vihar", name: "Anand Vihar", area: "East Delhi" },
-  { id: "rk-puram", name: "R.K. Puram", area: "South West Delhi" },
-  { id: "punjabi-bagh", name: "Punjabi Bagh", area: "West Delhi" },
-  { id: "noida-62", name: "Noida Sector 62", area: "Gautam Buddh Nagar" },
-  { id: "gurugram-vikas", name: "Gurugram Vikas Sadan", area: "Gurugram" },
+  { id: "ito", name: "ITO", area: "Central Delhi", lat: 28.6285, lon: 77.2411 },
+  { id: "anand-vihar", name: "Anand Vihar", area: "East Delhi", lat: 28.6469, lon: 77.3162 },
+  { id: "rk-puram", name: "R.K. Puram", area: "South West Delhi", lat: 28.5645, lon: 77.1668 },
+  { id: "punjabi-bagh", name: "Punjabi Bagh", area: "West Delhi", lat: 28.6742, lon: 77.1310 },
+  { id: "noida-62", name: "Noida Sector 62", area: "Gautam Buddh Nagar", lat: 28.6245, lon: 77.3565 },
+  { id: "gurugram-vikas", name: "Gurugram Vikas Sadan", area: "Gurugram", lat: 28.4595, lon: 77.0266 },
 ];
+
 
 export type Pollutant = "pm25" | "pm10" | "o3";
 

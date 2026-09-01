@@ -142,10 +142,40 @@
 }
 
 @utility panel {
-  background-color: color-mix(in oklab, var(--color-surface) 78%, transparent);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(8px);
+  background-color: color-mix(in oklab, var(--color-surface) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+    0 18px 40px -28px oklch(0 0 0 / 0.9);
+}
+
+@utility panel-glow {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -40% 55% 55% -10%;
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--color-primary) 22%, transparent),
+      transparent
+    );
+    pointer-events: none;
+  }
+}
+
+@utility icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in oklab, currentColor 28%, transparent);
+  background: color-mix(in oklab, currentColor 12%, transparent);
 }
 
 @utility metric-value {
@@ -153,3 +183,4 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
+
